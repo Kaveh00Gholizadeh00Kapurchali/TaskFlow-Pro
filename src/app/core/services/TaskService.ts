@@ -26,8 +26,13 @@ export interface user{
 
 export class TaskService {
 
+private  _tasks = signal<Task[]>([]);
+tasks = this._tasks.asReadonly();
+role = signal<string[]>(['admin', 'user', 'manager']);
+
+createTask(taskID: Task, userID: user) {
 
 
-
+}
 }
 
