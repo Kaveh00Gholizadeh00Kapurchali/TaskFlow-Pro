@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input, Output, signal, OnInit, OnDestroy } fro
 import { RouterLink } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { routes } from '../../app.routes';
+
 
 @Component({
   imports: [RouterLink, MatToolbarModule, MatButtonModule],
@@ -11,8 +13,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class TopNavBar {
   // urls 
-  @Input() homeURL : string = '/';
-  @Input() createNewTaskURL :string = 'task/add' ;
+  @Input() homeURL : string = '';
+  @Input() createNewTaskURL :string = '/task/add' ;
   @Input() taskManagementURL : string = '';
   @Input() timeZone : string = 'Asia/Tehran';
 
