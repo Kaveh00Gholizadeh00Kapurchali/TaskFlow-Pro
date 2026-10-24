@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <!-- عنوان برند -->
+  <span class="brand-title">
+    <span>⚡</span>
+    <span>TaskFlow Dashboard</span>
+  </span>
+
+  <!-- فاصله‌انداز هوشمند -->
+  <span class="navbar-spacer"></span>
+
+  <!-- ساعت و تقویم تهران -->
+  <span class="datetime-badge time">{{ FormatTime('Asia/Tehran') }}</span>
+  <span class="datetime-badge">{{ FormatDate('Asia/Tehran') }}</span>
+  
+  <!-- لینک‌های نویگیشن -->
+  <a [routerLink]="[taskManagementURL]" mat-button>Task management</a>
+  <a [routerLink]="[createNewTaskURL]" mat-button>Create a new task</a>
+  <a [routerLink]="[homeURL]" mat-button class="active">Home</a>
+</mat-toolbar>

@@ -8,12 +8,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 </head>
 <body class="bg-gray-100 p-6 min-h-screen">
-
+  <app-top-nav-bar
+    homeURL="http://localhost:4200/"
+    taskManagementURL="/tasks/list"
+    createNewTaskURL="/tasks/add"
+    timeZone="Asia/Tehran"
+  >
+  </app-top-nav-bar>
   <!-- کانتینر اصلی -->
   <div class="max-w-4xl mx-auto">
     
-    <!-- عنوان صفحه -->
-    <h1 class="text-xl font-bold text-gray-800 mb-4">TaskFlow Dashboard</h1>
+    
 
     <!-- کانتینر ستون‌ها -->
     <div class="bg-gray-200 p-4 rounded-xl flex space-x-4">

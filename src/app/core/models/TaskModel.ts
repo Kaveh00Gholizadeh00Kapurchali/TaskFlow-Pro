@@ -14,12 +14,7 @@ export interface Task {
     createdAt: string; // Timestamp of when the task was created
 }
 
-export interface user{
-    userId: number;
-    userName: string;
-    userEmail: string;
-    userRole: string; // e.g., "admin", "user", "manager" 
-}
+
 
 
 @Injectable({providedIn: 'root'})
@@ -30,9 +25,4 @@ private  _tasks = signal<Task[]>([]);
 tasks = this._tasks.asReadonly();
 role = signal<string[]>(['admin', 'user', 'manager']);
 
-createTask(taskID: Task, userID: user) {
-
-
 }
-}
-
