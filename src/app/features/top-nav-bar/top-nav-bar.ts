@@ -11,8 +11,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 })
 export class TopNavBar {
   // urls 
-  @Input() homeURL : string = 'http://localhost:4200/';
-  @Input() createNewTaskURL :string = '' ;
+  @Input() homeURL : string = '/';
+  @Input() createNewTaskURL :string = 'task/add' ;
   @Input() taskManagementURL : string = '';
   @Input() timeZone : string = 'Asia/Tehran';
 
