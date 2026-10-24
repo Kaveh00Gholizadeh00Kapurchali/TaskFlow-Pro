@@ -4,11 +4,12 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Task } from '../core/models/TaskModel';
+import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
 
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatMenuModule],
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatMenuModule, TopNavBar],
   styleUrl: './create-task.css',
   templateUrl: './create-task.html',
 })

@@ -13,7 +13,7 @@
   <span class="datetime-badge">{{ FormatDate('Asia/Tehran') }}</span>
   
   <!-- لینک‌های نویگیشن -->
-  <a [routerLink]="[taskManagementURL]" mat-button target="_blank" rel="noopener noreferrer">Task management</a>
-  <a [routerLink]="[createNewTaskURL]" mat-button target="_blank" rel="noopener noreferrer">Create a new task</a>
-  <a [routerLink]="[homeURL]" mat-button class="active" target="_blank" rel="noopener noreferrer">Home</a>
+  <a [routerLink]="[taskManagementURL]" mat-button target="_self" rel="noopener noreferrer">Task management</a>
+  <a [routerLink]="[createNewTaskURL]" mat-button target="_self" rel="noopener noreferrer">Create a new task</a>
+  <a [routerLink]="[homeURL]" mat-button class="active" target="_self" rel="noopener noreferrer">Home</a>
 </mat-toolbar>
