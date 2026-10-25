@@ -16,6 +16,7 @@ export class TopNavBar {
   @Input() homeURL : string = '';
   @Input() createNewTaskURL :string = '/task/add' ;
   @Input() taskManagementURL : string = '';
+  @Input() createUserURL : string = 'users/add';
   @Input() timeZone : string = 'Asia/Tehran';
 
 
