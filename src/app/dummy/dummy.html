@@ -1,1 +1,44 @@
-<p>dummy works!</p>
+<div class="form-card">
+    <h2>Register with formbuilder</h2>
+
+    <form [formGroup]="userform" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="username">نام کاربری</label>
+            <input type="text" formControlName="username" id="username" placeholder="مثلا کاوه">
+
+            @if(f['username'].touched && f['username'].errors?.['required']){
+                <small class="error">نام کاربری نامعتبر است!</small>
+            } @else if (f['username']?.pending) {
+                <small>در حال بررسی نام کاربری در سرور</small>
+            } @else{
+                <small class="success">نام کاربری عالیه</small>
+            }
+        </div>
+        <div class="form-group">
+            <label for="password">کلمه عبور:</label>
+            <input id="password" type="password" formControlName="password" placeholder="حداقل ۶ کاراکتر">
+
+            @if(f['password']?.touched && f['password']?.errors?.['required']){
+                <small class="error">رمز عبور الزامی است</small>
+            } @else if(f['password']?.touched && f['password']?.errors?.['minlength']){
+                <small class="error">رمز عبور باید حداقل ۶ کاراکتر باشد</small>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="email">ایمیل سازمانی:</label>
+            <input id="email" type="email" formControlName="email" placeholder="Dev@dev.com">
+
+            @if(f['email'].touched && f['email'].invalid){
+                <small>ایمیل معتبر نیست</small>
+            }
+        </div>
+
+        <button type="submit" [disabled]="userform.invalid" class="btn-submit">ثبت نام نهایی</button>
+
+        <button type="button" (click)="fillWithSampleData()" class="btn-secondary">
+            تست پر کردن خودکار داده
+        </button>
+    </form>
+</div>
