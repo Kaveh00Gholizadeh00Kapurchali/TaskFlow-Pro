@@ -1,1 +1,48 @@
-<p>create-user works!</p>
+<div class="registration-container">
+  <header>
+    <h2>ایجاد کاربر جدید</h2>
+    <p>اطلاعات کاربری را با دقت وارد کنید.</p>
+  </header>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="user-form">
+    
+    <!-- نام کاربری -->
+    <div class="form-group">
+      <label for="userName">نام کاربری</label>
+      <input id="userName" formControlName="userName" placeholder="مثال: kaveh_dev" />
+      @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid) {
+        <span class="error-msg">نام کاربری اجباری است.</span>
+      }
+    </div>
+
+    <!-- ایمیل -->
+    <div class="form-group">
+      <label for="userEmail">ایمیل</label>
+      <input id="userEmail" type="email" formControlName="userEmail" placeholder="example@domain.com" />
+      @if (registerForm.get('userEmail')?.touched && registerForm.get('userEmail')?.hasError('email')) {
+        <span class="error-msg">فرمت ایمیل صحیح نیست.</span>
+      }
+    </div>
+
+    <!-- پسورد -->
+    <div class="form-group">
+      <label for="userPassword">رمز عبور</label>
+      <input id="userPassword" type="password" formControlName="userPassword" placeholder="حداقل ۶ کاراکتر" />
+      @if (registerForm.get('userPassword')?.touched && registerForm.get('userPassword')?.hasError('minlength')) {
+        <span class="error-msg">رمز عبور باید حداقل ۶ کاراکتر باشد.</span>
+      }
+    </div>
+
+    <!-- نقش کاربری -->
+    <div class="form-group">
+      <label for="userRole">نقش (Role)</label>
+      <select id="userRole" formControlName="userRole">
+        <option value="" disabled selected>انتخاب نقش...</option>
+        <option value="admin">مدیر (Admin)</option>
+        <option value="user">کاربر (User)</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">ثبت کاربر</button>
+  </form>
+</div>

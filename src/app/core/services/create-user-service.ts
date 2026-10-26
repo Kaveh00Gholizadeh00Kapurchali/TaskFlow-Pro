@@ -6,7 +6,7 @@ import { IUser } from "../models/UserModel";
     providedIn: 'root'
 })
 
-export class User{
+export class UserService{
 
     private readonly _STORAGE_KEY = 'registered_users'
 
@@ -31,13 +31,11 @@ export class User{
 
     private users = signal<IUser[]>(this.loadUser());
 
-    addUser(userName:string, userEmail:string, userRole: string){
+    addUser(userdata: Omit<IUser, 'userId'>){
         const newUser : IUser =
             {
                 userId: Date.now(),
-                userName: userName ,
-                userEmail: userEmail,
-                userRole: userRole
+                ...userdata  // همه داده هارو بجز id از خود مدل میگیره خودش
             };
         this.users.update(n_user => [...n_user, newUser])
     }

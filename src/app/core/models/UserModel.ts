@@ -7,6 +7,7 @@ import {signal} from '@angular/core';
 export interface IUser{
     userId: number;
     userName: string;
+    userPassword: string;
     userEmail: string;
     userRole: string ;
          
