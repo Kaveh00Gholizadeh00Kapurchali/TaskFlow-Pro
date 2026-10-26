@@ -1,48 +1,72 @@
-<div class="registration-container">
-  <header>
-    <h2>ایجاد کاربر جدید</h2>
-    <p>اطلاعات کاربری را با دقت وارد کنید.</p>
-  </header>
-
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="user-form">
+<div class="taskflow-form-container max-w-md mx-auto mt-10">
+    <app-top-nav-bar
+      homeURL="http://localhost:4200/"
+       taskManagementURL="/tasks/list"
+       createNewTaskURL="/tasks/add"
+       createUserURL="user/add"
+       timeZone="Asia/Tehran"
+  >
+  </app-top-nav-bar>
+  <!-- بدنه اصلی کارت -->
+  <div class="taskflow-card bg-white p-6 rounded-lg shadow-sm border border-gray-300">
     
-    <!-- نام کاربری -->
-    <div class="form-group">
-      <label for="userName">نام کاربری</label>
-      <input id="userName" formControlName="userName" placeholder="مثال: kaveh_dev" />
-      @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid) {
-        <span class="error-msg">نام کاربری اجباری است.</span>
-      }
+    <!-- هدر فرم -->
+    <div class="border-b border-gray-200 pb-4 mb-6">
+      <h2 class="text-lg font-bold text-gray-800">Create New User</h2>
+      <p class="text-sm text-gray-500">Fill in the details to add a new team member.</p>
     </div>
 
-    <!-- ایمیل -->
-    <div class="form-group">
-      <label for="userEmail">ایمیل</label>
-      <input id="userEmail" type="email" formControlName="userEmail" placeholder="example@domain.com" />
-      @if (registerForm.get('userEmail')?.touched && registerForm.get('userEmail')?.hasError('email')) {
-        <span class="error-msg">فرمت ایمیل صحیح نیست.</span>
-      }
-    </div>
+    <!-- فرم -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
+      
+      <!-- نام کاربری -->
+      <div>
+        <label for="userName" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+        <input id="userName" formControlName="userName" type="text" 
+          class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none" 
+          placeholder="e.g. kaveh_dev">
+        @if (registerForm.get('userName')?.touched && registerForm.get('userName')?.invalid) {
+            <p class="taskflow-error text-red-500 text-xs mt-1">Username is required.</p>
+        }
+      </div>
 
-    <!-- پسورد -->
-    <div class="form-group">
-      <label for="userPassword">رمز عبور</label>
-      <input id="userPassword" type="password" formControlName="userPassword" placeholder="حداقل ۶ کاراکتر" />
-      @if (registerForm.get('userPassword')?.touched && registerForm.get('userPassword')?.hasError('minlength')) {
-        <span class="error-msg">رمز عبور باید حداقل ۶ کاراکتر باشد.</span>
-      }
-    </div>
+      <!-- ایمیل -->
+      <div>
+        <label for="userEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input id="userEmail" formControlName="userEmail" type="email" 
+          class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none" 
+          placeholder="example@domain.com">
+      </div>
 
-    <!-- نقش کاربری -->
-    <div class="form-group">
-      <label for="userRole">نقش (Role)</label>
-      <select id="userRole" formControlName="userRole">
-        <option value="" disabled selected>انتخاب نقش...</option>
-        <option value="admin">مدیر (Admin)</option>
-        <option value="user">کاربر (User)</option>
-      </select>
-    </div>
+      <!-- پسورد -->
+      <div>
+        <label for="userPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <input id="userPassword" formControlName="userPassword" type="password" 
+          class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none" 
+          placeholder="Min 6 characters">
+      </div>
 
-    <button type="submit" [disabled]="registerForm.invalid">ثبت کاربر</button>
-  </form>
+      <!-- نقش -->
+      <div>
+        <label for="userRole" class="block text-sm font-medium text-gray-700 mb-1">Role</label>
+        <select id="userRole" formControlName="userRole" 
+          class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none">
+          <option value="" disabled selected>Select a role...</option>
+          <option value="admin">Admin</option>
+          <option value="admin">Manager</option>
+          <option value="user">User</option>
+        </select>
+      </div>
+
+      <!-- دکمه ثبت -->
+      <div class="pt-4">
+        <button type="submit" [disabled]="registerForm.invalid"
+          class="taskflow-button w-full flex items-center justify-center bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 text-white text-sm py-2 px-4 rounded-md font-medium transition duration-200">
+          <span class="taskflow-button-icon">+</span>
+          Create User
+        </button>
+      </div>
+
+    </form>
+  </div>
 </div>

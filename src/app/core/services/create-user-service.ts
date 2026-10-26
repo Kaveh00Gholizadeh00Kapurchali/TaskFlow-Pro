@@ -8,12 +8,13 @@ import { IUser } from "../models/UserModel";
 
 export class UserService{
 
+    private users = signal<IUser[]>(this.loadUsers());
     private readonly _STORAGE_KEY = 'registered_users'
 
     constructor(){
         effect(() => {
 
-            const value = this.users;
+            const value = this.users();
 
             if(typeof localStorage !== 'undefined')
             {
@@ -23,13 +24,21 @@ export class UserService{
 
     }
     
-    loadUser(): any[]{
-        if(typeof localStorage === 'undefined') return [];
-        const data = localStorage.getItem(this._STORAGE_KEY)
-        return data ? JSON.parse(data) : [];
-    }
+    // داخل سرویس
+private loadUsers(): IUser[] {
+  const stored = localStorage.getItem(this._STORAGE_KEY);
+  if (!stored) return [];   // <-- کلید امضای این
+  try {
+    const parsed = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    // اگه به هر دلیلی JSON خراب بود، لوگ کن و خالی برگردون
+    console.error('Failed to parse stored users:', error);
+    return [];
+  }
+}
 
-    private users = signal<IUser[]>(this.loadUser());
+    
 
     addUser(userdata: Omit<IUser, 'userId'>){
         const newUser : IUser =

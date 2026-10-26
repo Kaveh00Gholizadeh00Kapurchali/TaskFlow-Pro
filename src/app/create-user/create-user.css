@@ -1,68 +1,101 @@
-.registration-container {
-  max-width: 400px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  font-family: sans-serif;
+/* =================== TaskFlow Pro - User Creation Form =================== */
+
+/* افکت ورود نرم برای کل فرم (Fade + Slide Up) */
+.taskflow-form-container {
+  animation: taskflow-fade-in 0.4s ease-out forwards;
 }
 
-header h2 {
-  margin-top: 0;
-  color: #333;
+@keyframes taskflow-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
+/* ====== سفارشی‌سازی کارت اصلی ====== */
+.taskflow-card {
+  /* حالت هاور برای سایه نرم */
+  transition: box-shadow 0.25s ease-in-out, border-color 0.25s ease-in-out;
 }
 
-label {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #555;
-  font-size: 0.9rem;
+.taskflow-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db; /* gray-400 برای زیبایی */
 }
 
-input, select {
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+/* ====== سفارشی‌سازی Input ها ====== */
+.taskflow-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background-color: #ffffff;
 }
 
-input:focus, select:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+/* جلوه ورود نرم متن در اینپوت */
+.taskflow-input::placeholder {
+  color: #9ca3af; /* gray-400 */
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
 }
 
-.error-msg {
-  color: #dc3545;
-  font-size: 0.8rem;
-  margin-top: 0.4rem;
+/* وقتی کاربر شروع به تایپ کرد، placeholder محو بشه */
+.taskflow-input:focus::placeholder {
+  opacity: 0.3;
 }
 
-button {
-  width: 100%;
-  padding: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s;
+/* حالت فوکوس پیشرفته (به جز Tailwind ها) */
+.taskflow-input:focus {
+  background-color: #fafafa; /* یک ته رنگ بسیار ملایم */
+  border-color: #3b82f6; /* blue-500 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+/* ====== سفارشی‌سازی Select ====== */
+.taskflow-input option:disabled {
+  color: #9ca3af;
 }
 
-button:hover:not(:disabled) {
-  background-color: #0056b3;
+/* ====== سفارشی‌سازی دکمه ====== */
+.taskflow-button {
+  position: relative;
+  letter-spacing: 0.02em;
+}
+
+/* افکت حرکت حرفه‌ای آیکون وقتی موس می‌ره روش */
+.taskflow-button-icon {
+  display: inline-block;
+  margin-right: 0.4rem;
+  transition: transform 0.2s ease;
+}
+
+.taskflow-button:hover .taskflow-button-icon {
+  transform: rotate(90deg); /* آیکون + رو می‌چرخونه و حس افزودن می‌ده */
+}
+
+/* اضافه کردن فشار فیزیکی (Press effect) */
+.taskflow-button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* حالت سایه دکمه برای داشتن عمق */
+.taskflow-button:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+}
+
+/* ====== پیام خطا با انیمیشن نرم ====== */
+.taskflow-error {
+  animation: taskflow-error-slide 0.3s ease forwards;
+}
+
+@keyframes taskflow-error-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

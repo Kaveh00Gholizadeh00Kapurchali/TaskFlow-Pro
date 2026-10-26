@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../core/services/create-user-service';
 
+import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
+
 @Component({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule , TopNavBar],
   selector: 'app-create-user',
   styleUrl: './create-user.css',
   templateUrl: './create-user.html',
