@@ -37,13 +37,14 @@ export class TaskService{
         }
     }
 
-    
 
-    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'>){ 
+
+    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'>){ 
         const newTask ={
             taskId: Date.now(),
             status: 'pending',
             createdAt: Date.now(),
+            hourlyRate: 0 ,
             ...taskData
         };
         this.tasks.update(n_task => [...n_task, newTask])

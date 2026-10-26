@@ -3,7 +3,7 @@
       homeURL="/"
       taskManagementURL="/tasks/list"
       createNewTaskURL="/tasks/add"
-      createUserURL="/user/add"
+      createUserURL="/users/add"
       timeZone="Asia/Tehran"
     >
     </app-top-nav-bar>
@@ -113,7 +113,7 @@
             <span class="text-gray-400 text-xs">▼</span>
           </button>
   
-          <!-- منوی متریال -->
+          <!-- منوی متریال (با اضافه شدن گزینه Urgent برای مطابقت با setPriority) -->
           <mat-menu #priorityMenu="matMenu">
             <button mat-menu-item (click)="setPriority('Low')">
               <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
@@ -124,8 +124,12 @@
               <span>Medium</span>
             </button>
             <button mat-menu-item (click)="setPriority('High')">
+              <span class="inline-block w-2 h-2 rounded-full bg-orange-500 mr-2"></span>
+              <span>High</span>
+            </button>
+            <button mat-menu-item (click)="setPriority('Urgent')">
               <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-              <span>High (Urgent)</span>
+              <span>Urgent</span>
             </button>
           </mat-menu>
   

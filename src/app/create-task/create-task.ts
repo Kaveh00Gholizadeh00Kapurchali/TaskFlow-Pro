@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { Task } from '../core/models/TaskModel';
+import { ITask } from '../core/models/TaskModel';
 import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
+import { TaskService } from '../core/services/create-task-service';
 
 @Component({
   selector: 'app-create-task',
@@ -15,11 +16,14 @@ import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
 })
 export class CreateTask {
   private fb = inject(FormBuilder);
+  protected taskService = inject(TaskService);
+
 
   // تایپ تمیز و دقیق
   taskForm: FormGroup = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(3)]],
     description: ['', [Validators.maxLength(300)]],
+    createdBy: ['', [Validators.required]],
     dueDate: ['', Validators.required],
     priority: ['', Validators.required]
   });
@@ -29,16 +33,17 @@ export class CreateTask {
   get description() { return this.taskForm.get('description'); }
   get dueDate() { return this.taskForm.get('dueDate'); }
   get priority() { return this.taskForm.get('priority'); }
+  get createdBy() { return this.taskForm.get('createdBy'); }
 
   // متد انتخاب اولویت با کلیک روی گزینه‌های منوی متریال
-  setPriority(level: 'Low' | 'Medium' | 'High'): void {
+  setPriority(level: 'Low' | 'Medium' | 'High' | 'Urgent'): void {
     this.taskForm.patchValue({ priority: level });
     this.priority?.markAsDirty();
   }
 
   onSubmit(): void {
     if (this.taskForm.valid) {
-      const taskData: Task = this.taskForm.value;
+      const taskData: ITask = this.taskForm.value;
       console.log('تسک ایجاد شد:', taskData);
       this.taskForm.reset();
     } else {
