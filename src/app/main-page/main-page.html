@@ -34,50 +34,35 @@
         <!-- کارت‌های تسک -->
         <div class="space-y-3">
           
-          <!-- تسک اول -->
+          <div class="space-y-3">
+
+        @for (task of taskService.C_tasks(); track task.taskId) {
+          <!-- کارت تسک -->
           <div class="p-3 bg-gray-50 border border-gray-200 rounded-md">
-            <p class="text-sm text-gray-700 font-medium mb-3">Setup ASP.NET Core Project</p>
-            
+            <p class="text-sm text-gray-700 font-medium mb-3">{{ task.taskName }}</p>
+
             <div class="flex space-x-2">
-              <button type="button" class="flex-1 flex items-center justify-center bg-white border border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 text-gray-600 text-xs py-1.5 px-2 rounded font-medium">
+              <button type="button"
+                class="flex-1 flex items-center justify-center bg-white border border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 text-gray-600 text-xs py-1.5 px-2 rounded font-medium">
                 <!-- آیکون مثبت -->
                 <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                 </svg>
                 <span>Add to in progress</span>
               </button>
-              
+
               <!-- دکمه جزئیات -->
-              <button type="button" class="flex items-center justify-center bg-white border border-gray-300 hover:bg-gray-100 text-gray-600 text-xs py-1.5 px-2 rounded" title="Task Details">
-                <!-- آیکون اطلاعات (Details) -->
+              <button type="button"
+                class="flex items-center justify-center bg-white border border-gray-300 hover:bg-gray-100 text-gray-600 text-xs py-1.5 px-2 rounded"
+                title="Task Details" (click)="openTaskModal(task.taskId)">
                 <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </button>
             </div>
           </div>
+        }
 
-          <!-- تسک دوم -->
-          <div class="p-3 bg-gray-50 border border-gray-200 rounded-md">
-            <p class="text-sm text-gray-700 font-medium mb-3">Design Database Schema</p>
-            
-            <div class="flex space-x-2">
-              <button type="button" class="flex-1 flex items-center justify-center bg-white border border-gray-300 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-600 text-gray-600 text-xs py-1.5 px-2 rounded font-medium">
-                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                </svg>
-                <span>Add to in progress</span>
-              </button>
-              
-              <button type="button" class="flex items-center justify-center bg-white border border-gray-300 hover:bg-gray-100 text-gray-600 text-xs py-1.5 px-2 rounded" title="Task Details">
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-        </div>
       </div>
 
       <!-- ستون ۲: تسک‌های در حال انجام (Tasks in progress) -->

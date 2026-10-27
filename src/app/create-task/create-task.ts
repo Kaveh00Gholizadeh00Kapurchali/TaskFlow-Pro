@@ -21,16 +21,16 @@ export class CreateTask {
 
   // تایپ تمیز و دقیق
   taskForm: FormGroup = this.fb.group({
-    title: ['', [Validators.required, Validators.minLength(3)]],
-    description: ['', [Validators.maxLength(300)]],
+    taskName: ['', [Validators.required, Validators.minLength(3)]],
+    taskDescription: ['', [Validators.maxLength(300)]],
     createdBy: ['', [Validators.required]],
     dueDate: ['', Validators.required],
     priority: ['', Validators.required]
   });
 
   // گترهای راحت برای اعتبارسنجی در HTML
-  get title() { return this.taskForm.get('title'); }
-  get description() { return this.taskForm.get('description'); }
+  get taskName() { return this.taskForm.get('taskName'); }
+  get taskDescription() { return this.taskForm.get('taskDescription'); }
   get dueDate() { return this.taskForm.get('dueDate'); }
   get priority() { return this.taskForm.get('priority'); }
   get createdBy() { return this.taskForm.get('createdBy'); }

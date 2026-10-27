@@ -8,13 +8,15 @@ import { ITask } from "../models/TaskModel";
 })
 
 export class TaskService{
+    private readonly _STORAGE_KEY = 'registered_tasks';
 
     private tasks = signal<ITask[]>(this.loadTasks());
-    private readonly _STORAGE_KEY = 'registered_tasks';
+
+    readonly C_tasks = this.tasks.asReadonly();
 
     constructor(){
         effect(() => {
-            const value = this.tasks;
+            const value = this.tasks();
             if (typeof localStorage !== 'undefined')
                 {
                     localStorage.setItem(this._STORAGE_KEY, JSON.stringify(value));
