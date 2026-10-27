@@ -1,6 +1,6 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
-import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { ITask } from '../../core/models/TaskModel';
 
 
@@ -13,4 +13,5 @@ import { ITask } from '../../core/models/TaskModel';
 export class TaskModal {
   
   task = inject<ITask>(DIALOG_DATA);
+  dialogRef = inject(DialogRef);
 }

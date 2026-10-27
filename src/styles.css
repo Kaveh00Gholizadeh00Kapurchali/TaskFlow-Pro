@@ -1,3 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@import '@angular/cdk/overlay-prebuilt.css';
+
+:root {
+  --tf-bg: #f3f5fa;
+  --tf-surface: #ffffff;
+  --tf-surface-soft: #f8f9fd;
+  --tf-text: #1d2840;
+  --tf-muted: #6e7b91;
+  --tf-border: #e1e6f0;
+  --tf-primary: #4c57d6;
+  --tf-primary-dark: #3944b8;
+  --tf-primary-soft: #eef0ff;
+  --tf-danger: #c84758;
+  --tf-radius: 18px;
+  --tf-shadow: 0 12px 36px rgba(35, 49, 85, .07);
+}
+
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background: var(--tf-bg);
+  color: var(--tf-text);
+  font-family: Inter, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea, select { font: inherit; }
+button:not(:disabled), a { cursor: pointer; }
+:focus-visible { outline: 3px solid #9aa4ff; outline-offset: 3px; }
+.cdk-overlay-dark-backdrop { background: rgba(22, 30, 52, .55); }
+.cdk-overlay-pane { max-width: calc(100vw - 32px); }

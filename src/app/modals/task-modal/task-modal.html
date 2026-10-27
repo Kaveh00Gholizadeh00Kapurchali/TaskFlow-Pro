@@ -1,8 +1,28 @@
-<h2>{{ task.taskName }}</h2>
+<article class="task-modal">
+  <header class="modal-header">
+    <div>
+      <p class="eyebrow">TASK DETAILS</p>
+      <h2>{{ task.taskName }}</h2>
+      <p class="task-id">Task #{{ task.taskId }}</p>
+    </div>
+    <button type="button" class="close-button" aria-label="Close task details" (click)="dialogRef.close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </header>
 
-<p>{{ task.taskDescription }}</p>
-
-<p>Created by: {{ task.createdBy }}</p>
-<p>Due date: {{ task.dueDate }}</p>
-<p>Priority: {{ task.priority }}</p>
-<p>Status: {{ task.status }}</p>
+  <div class="modal-body">
+    <section class="description">
+      <h3>Description</h3>
+      <p>{{ task.taskDescription || 'No description provided.' }}</p>
+    </section>
+    <dl class="details-grid">
+      <div><dt>Due date</dt><dd>{{ task.dueDate || 'Not set' }}</dd></div>
+      <div><dt>Priority</dt><dd><span class="badge">{{ task.priority || 'Not set' }}</span></dd></div>
+      <div><dt>Status</dt><dd><span class="badge status">{{ task.status || 'Not set' }}</span></dd></div>
+      <div><dt>Created by</dt><dd>{{ task.createdBy }}</dd></div>
+    </dl>
+  </div>
+  <footer class="modal-footer">
+    <button type="button" class="done-button" (click)="dialogRef.close()">Done</button>
+  </footer>
+</article>

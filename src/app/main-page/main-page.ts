@@ -22,7 +22,8 @@ export class MainPage {
   private dialog = inject(Dialog);
   protected openTaskModal(task: ITask){
     this.dialog.open(TaskModal, {
-      data: task
+      data: task,
+      ariaLabel: `Details for ${task.taskName}`
     });
   }
 }

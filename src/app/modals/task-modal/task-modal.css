@@ -1,0 +1,19 @@
+:host { display: block; }
+.task-modal { width: min(540px, calc(100vw - 32px)); max-height: min(720px, calc(100vh - 32px)); overflow: auto; border: 1px solid var(--tf-border); border-radius: 20px; background: var(--tf-surface); color: var(--tf-text); box-shadow: 0 24px 70px rgba(15, 23, 42, .25); }
+.modal-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 28px 28px 22px; border-bottom: 1px solid var(--tf-border); }
+.eyebrow { margin: 0 0 8px; color: var(--tf-primary); font-size: .68rem; font-weight: 800; letter-spacing: .12em; }
+h2 { margin: 0; overflow-wrap: anywhere; font-size: 1.35rem; font-weight: 750; letter-spacing: -.03em; line-height: 1.3; }
+.task-id { margin: 7px 0 0; color: var(--tf-muted); font-size: .75rem; }
+.close-button { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--tf-border); border-radius: 10px; background: var(--tf-surface-soft); color: var(--tf-muted); font-size: 1.5rem; line-height: 1; }
+.close-button:hover { background: var(--tf-primary-soft); color: var(--tf-primary); }
+.modal-body { padding: 24px 28px; }
+h3, dt { margin: 0 0 8px; color: var(--tf-muted); font-size: .7rem; font-weight: 750; letter-spacing: .06em; text-transform: uppercase; }
+.description p { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--tf-text); font-size: .9rem; line-height: 1.65; }
+.details-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0 0; padding: 20px; border: 1px solid var(--tf-border); border-radius: 12px; background: var(--tf-surface-soft); }
+dd { margin: 0; color: var(--tf-text); font-size: .875rem; font-weight: 650; overflow-wrap: anywhere; }
+.badge { display: inline-block; padding: 4px 9px; border-radius: 7px; background: var(--tf-primary-soft); color: var(--tf-primary); font-size: .75rem; }
+.status { background: #e6f6ef; color: #167a56; }
+.modal-footer { display: flex; justify-content: flex-end; padding: 18px 28px 24px; border-top: 1px solid var(--tf-border); }
+.done-button { min-width: 92px; min-height: 40px; border-radius: 10px; background: var(--tf-primary); color: white; font-size: .85rem; font-weight: 700; }
+.done-button:hover { background: var(--tf-primary-dark); }
+@media (max-width: 480px) { .modal-header, .modal-body { padding: 20px; } .modal-footer { padding: 16px 20px 20px; } .details-grid { gap: 16px; padding: 16px; } }
