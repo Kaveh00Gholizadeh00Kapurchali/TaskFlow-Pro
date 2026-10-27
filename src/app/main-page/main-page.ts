@@ -1,10 +1,13 @@
 import { Component, inject } from '@angular/core';
 
 import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
-import { Dialog } from '@angular/cdk/dialog';
+import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
 
 import { TaskService } from '../core/services/create-task-service';
 import { TaskModal } from '../modals/task-modal/task-modal';
+import { ITask } from '../core/models/TaskModel';
+
+
 
 @Component({
   imports: [TopNavBar],
@@ -15,10 +18,11 @@ import { TaskModal } from '../modals/task-modal/task-modal';
 export class MainPage {
   taskService = inject(TaskService);
 
+
   private dialog = inject(Dialog);
-  protected openTaskModal(){
-    this.dialog.open(TaskModal);
+  protected openTaskModal(task: ITask){
+    this.dialog.open(TaskModal, {
+      data: task
+    });
   }
-
-
 }

@@ -41,11 +41,12 @@ export class TaskService{
 
 
 
-    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'>){ 
+    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'| 'createdBy'>){ 
         const newTask ={
             taskId: Date.now(),
             status: 'pending',
             createdAt: Date.now(),
+            createdBy: 0,
             hourlyRate: 0 ,
             ...taskData
         };

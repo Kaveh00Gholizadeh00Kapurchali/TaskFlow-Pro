@@ -23,7 +23,6 @@ export class CreateTask {
   taskForm: FormGroup = this.fb.group({
     taskName: ['', [Validators.required, Validators.minLength(3)]],
     taskDescription: ['', [Validators.maxLength(300)]],
-    createdBy: ['', [Validators.required]],
     dueDate: ['', Validators.required],
     priority: ['', Validators.required]
   });
@@ -43,8 +42,15 @@ export class CreateTask {
 
   onSubmit(): void {
     if (this.taskForm.valid) {
-      const taskData: ITask = this.taskForm.value;
-      console.log('تسک ایجاد شد:', taskData);
+
+      const formData: ITask = this.taskForm.getRawValue();
+      
+      this.taskService.addTask({
+        taskName: formData.taskName,
+        taskDescription: formData.taskDescription,
+        dueDate: formData.dueDate,
+        priority: formData.priority
+      });
       this.taskForm.reset();
     } else {
       this.taskForm.markAllAsTouched();

@@ -1,5 +1,8 @@
-import { Component, inject } from '@angular/core';
-import { TaskService } from '../../core/services/create-task-service';
+import { Component, inject, signal } from '@angular/core';
+
+import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
+import { ITask } from '../../core/models/TaskModel';
+
 
 @Component({
   imports: [],
@@ -8,5 +11,6 @@ import { TaskService } from '../../core/services/create-task-service';
   templateUrl: './task-modal.html',
 })
 export class TaskModal {
-  taskService = inject(TaskService);
+  
+  task = inject<ITask>(DIALOG_DATA);
 }
