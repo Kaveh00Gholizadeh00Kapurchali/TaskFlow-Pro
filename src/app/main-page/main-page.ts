@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 
 import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
-import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
+import { Dialog} from '@angular/cdk/dialog';
 
 import { TaskService } from '../core/services/create-task-service';
 import { TaskModal } from '../modals/task-modal/task-modal';
@@ -25,5 +25,9 @@ export class MainPage {
       data: task,
       ariaLabel: `Details for ${task.taskName}`
     });
+  }
+
+  protected startTask (task: ITask){
+    this.taskService.startTask(task.taskId)
   }
 }

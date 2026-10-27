@@ -52,4 +52,8 @@ export class TaskService{
         };
         this.tasks.update(n_task => [...n_task, newTask])
     }
+
+    startTask(taskId: number): void {
+        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'pending' ? {...task , status: 'in progress'} : task));
+    }
 }
