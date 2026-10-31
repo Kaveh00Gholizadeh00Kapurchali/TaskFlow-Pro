@@ -20,7 +20,7 @@
         <!-- کارت‌های تسک -->
         <div class="space-y-3">
           <div class="space-y-3">
-            @for (task of taskService.C_tasks(); track task.taskId) {
+            @for (task of pendingTasks(); track task.taskId) {
               <!-- کارت تسک -->
               @if (task.status === 'pending') {
                 <div class="p-3 bg-gray-50 border border-gray-200 rounded-md">
@@ -83,15 +83,22 @@
 
         <!-- کارت‌های در حال انجام -->
         <div class="space-y-3">
-          @for (task of taskService.C_tasks(); track task.taskId) {
+          @for (task of inProgressTasks(); track task.taskId) {
             @if (task.status === 'in progress') {
               <div class="p-3 bg-blue-50 border border-blue-200 rounded-md">
                 <p class="text-sm text-blue-900 font-medium mb-3">{{ task.taskName }}</p>
+                <p class="text-sm text-gray-500 mb-3">
+                  Elapsed:
+                  <span class="font-mono">
+                    {{ formatDuration(elapsedMiliSeconds(task)) }}
+                  </span>
+                </p>
+
 
                 <div class="flex space-x-2">
                   <button
                     type="button"
-                    class="flex-1 flex items-center justify-center bg-white border border-blue-200 hover:bg-green-50 hover:border-green-300 hover:text-green-600 text-blue-700 text-xs py-1.5 px-2 rounded font-medium"
+                    class="flex-1 flex items-center justify-center bg-white border border-blue-200 hover:bg-green-50 hover:border-green-300 hover:text-green-600 text-blue-700 text-xs py-1.5 px-2 rounded font-medium" (click)="completeTask(task)"
                   >
                     <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path

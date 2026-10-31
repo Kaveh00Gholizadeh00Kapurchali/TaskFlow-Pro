@@ -41,19 +41,37 @@ export class TaskService{
 
 
 
-    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'| 'createdBy'>){ 
+    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'| 'createdBy' | 'startedAt' | 'completedAt'>){ 
         const newTask ={
             taskId: Date.now(),
             status: 'pending',
             createdAt: Date.now(),
             createdBy: 0,
             hourlyRate: 0 ,
+
+            startedAt: null,
+            completedAt: null,
+
             ...taskData
         };
         this.tasks.update(n_task => [...n_task, newTask])
     }
 
     startTask(taskId: number): void {
-        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'pending' ? {...task , status: 'in progress'} : task));
+        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'pending' ? {...task , status: 'in progress', startedAt: Date.now(), completedAt: null} : task));
     }
+
+    completeTask(taskId : number): void{
+        const completedAt = Date.now()
+
+        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'in progress' ? {
+       
+            ...task,     
+            status: 'completed',
+            completedAt,
+        }
+         : task 
+        )
+            );
+             }
 }
