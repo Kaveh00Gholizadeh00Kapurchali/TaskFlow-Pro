@@ -56,10 +56,12 @@ export class MainPage {
   }
 
   protected elapsedMiliSeconds(task: ITask): number{
+    const now = this.now();
+
     if(task.startedAt === null){
       return 0;
     }
-    const endTime = task.status === 'completed' ? task.completedAt : Date.now();
+    const endTime = task.status === 'completed' ? task.completedAt : now;
     if (endTime === null){
       return 0;
     }

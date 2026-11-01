@@ -1,7 +1,9 @@
-import { Injectable, effect, signal } from "@angular/core";
+import { Injectable, effect, signal, inject} from "@angular/core";
 
 import { ITask } from "../models/TaskModel";
 
+
+import { AuthService } from "./auth-service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,6 +15,8 @@ export class TaskService{
     private tasks = signal<ITask[]>(this.loadTasks());
 
     readonly C_tasks = this.tasks.asReadonly();
+
+    private auth = inject(AuthService);
 
     constructor(){
         effect(() => {
@@ -46,7 +50,7 @@ export class TaskService{
             taskId: Date.now(),
             status: 'pending',
             createdAt: Date.now(),
-            createdBy: 0,
+            createdBy: this.auth.C_currentUser()?.userId ?? 0,
             hourlyRate: 0 ,
 
             startedAt: null,

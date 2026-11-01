@@ -9,7 +9,10 @@ import { IUser } from "../models/UserModel";
 export class UserService{
 
     private users = signal<IUser[]>(this.loadUsers());
+    readonly C_users = this.users.asReadonly();
+
     private readonly _STORAGE_KEY = 'registered_users'
+
 
     constructor(){
         effect(() => {
