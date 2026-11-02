@@ -87,18 +87,11 @@
             @if (task.status === 'in progress') {
               <div class="p-3 bg-blue-50 border border-blue-200 rounded-md">
                 <p class="text-sm text-blue-900 font-medium mb-3">{{ task.taskName }}</p>
-                <p class="text-sm text-gray-600 mb-3">
-                  Assigned to:
-                  @if (task.assignedTo == null) {
-                    Unassigned
-                  } @else if (task.assignedTo === auth.C_currentUser()?.userId) {
-                    {{ auth.C_currentUser()?.userName }} (you)
-                  } @else {
-                    User #{{ task.assignedTo }}
-                  }
-                </p>
                 <p class="text-sm text-gray-500 mb-3">
                   Elapsed:
+                  <p class="text-sm text-gray-600">
+                   Assigned to: {{ assingneeName(task.assignedTo) }}
+
                   <span class="font-mono">
                     {{ formatDuration(elapsedMiliSeconds(task)) }}
                   </span>
@@ -106,7 +99,6 @@
 
 
                 <div class="flex space-x-2">
-                  @if (task.assignedTo === auth.C_currentUser()?.userId || auth.C_currentUser()?.userRole === 'admin') {
                   <button
                     type="button"
                     class="flex-1 flex items-center justify-center bg-white border border-blue-200 hover:bg-green-50 hover:border-green-300 hover:text-green-600 text-blue-700 text-xs py-1.5 px-2 rounded font-medium" (click)="completeTask(task)"
@@ -121,7 +113,6 @@
                     </svg>
                     <span>Mark as Done</span>
                   </button>
-                  }
 
                   <button
                     type="button"
