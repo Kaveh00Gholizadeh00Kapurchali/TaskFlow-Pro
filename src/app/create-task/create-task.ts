@@ -24,7 +24,8 @@ export class CreateTask {
     taskName: ['', [Validators.required, Validators.minLength(3)]],
     taskDescription: ['', [Validators.maxLength(300)]],
     dueDate: ['', Validators.required],
-    priority: ['', Validators.required]
+    priority: ['', Validators.required],
+    visibleToRole: ['', Validators.required]
   });
 
   // گترهای راحت برای اعتبارسنجی در HTML
@@ -33,6 +34,7 @@ export class CreateTask {
   get dueDate() { return this.taskForm.get('dueDate'); }
   get priority() { return this.taskForm.get('priority'); }
   get createdBy() { return this.taskForm.get('createdBy'); }
+  get visibleToRole() { return this.taskForm.get('visibleToRole'); }
 
   // متد انتخاب اولویت با کلیک روی گزینه‌های منوی متریال
   setPriority(level: 'Low' | 'Medium' | 'High' | 'Urgent'): void {
@@ -49,8 +51,10 @@ export class CreateTask {
         taskName: formData.taskName,
         taskDescription: formData.taskDescription,
         dueDate: formData.dueDate,
-        priority: formData.priority
+        priority: formData.priority,
+        visibleToRole: formData.visibleToRole,
       });
+      
       this.taskForm.reset();
     } else {
       this.taskForm.markAllAsTouched();

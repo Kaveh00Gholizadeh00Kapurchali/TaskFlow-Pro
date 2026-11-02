@@ -139,7 +139,28 @@
         </div>
   
       </div>
-  
+
+      <div>
+        <label for="visibleToRole" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+          Visible to role <span class="text-red-500">*</span>
+        </label>
+        <select
+          id="visibleToRole"
+          formControlName="visibleToRole"
+          class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+        >
+          <option value="">Select a role</option>
+          <option value="developer">Developer</option>
+          <option value="designer">Designer</option>
+          <option value="manager">Manager</option>
+          <option value="admin">Admin</option>
+        </select>
+        @if (taskForm.get('visibleToRole')?.invalid && taskForm.get('visibleToRole')?.touched) {
+          <p class="text-xs text-red-500 mt-1">Please select a role.</p>
+        }
+      </div>
+
+
       <!-- دکمه‌های اکشن (Submit / Reset) -->
       <div class="flex items-center justify-end space-x-3 pt-3 border-t">
         <button

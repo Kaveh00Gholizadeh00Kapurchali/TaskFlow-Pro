@@ -19,7 +19,7 @@ export class AuthService{
     private currentUser = signal<IUser|null>(this.loadSession())
     readonly C_currentUser = this.currentUser.asReadonly();
 
-    readonly isLoggedIn = computed(() => this.currentUser !== null);
+    readonly isLoggedIn = computed(() => this.currentUser() !== null);
 
     constructor(){
 

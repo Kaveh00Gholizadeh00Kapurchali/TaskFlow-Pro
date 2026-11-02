@@ -7,6 +7,8 @@ import { TaskService } from '../core/services/create-task-service';
 import { TaskModal } from '../modals/task-modal/task-modal';
 import { ITask } from '../core/models/TaskModel';
 
+import { AuthService } from '../core/services/auth-service';
+import { UserService } from '../core/services/create-user-service';
 
 
 @Component({
@@ -17,27 +19,57 @@ import { ITask } from '../core/models/TaskModel';
 })
 export class MainPage {
   taskService = inject(TaskService);
-
+  auth = inject(AuthService);
+  userService = inject(UserService)
+  
   protected now = signal(Date.now());
   protected destroyRef = inject(DestroyRef);
-
+  
   constructor(){
     const timerId = setInterval(() =>{
       this.now.set(Date.now());
     }, 1000)
-
+    
     this.destroyRef.onDestroy(() => {
       clearInterval(timerId)
     })
   }
-
+  
   protected pendingTasks = computed(() =>
-    this.taskService.C_tasks().filter(task => task.status === 'pending')
-  );
+    this.visibleTasks().filter(task => task.status === 'pending')
+);
 
-  protected inProgressTasks = computed(() =>
-    this.taskService.C_tasks().filter(task => task.status === 'in progress')
+protected inProgressTasks = computed(() =>
+  this.visibleTasks().filter(task => task.status === 'in progress')
+);
+
+
+protected visibleTasks = computed(() => {
+  const currentUser = this.auth.C_currentUser();
+
+  if(!currentUser){
+    return [];
+  }
+
+  return this.taskService.C_tasks().filter((task) => { return ( currentUser.userRole === 'admin' || currentUser.userRole === 'manager' || task.visibleToRole === currentUser.userRole
   );
+  });
+});
+
+
+
+  protected assingneeName(userId : number | null) : string {
+    if (userId === null){
+      return 'Unassigned';
+    }
+
+    const user = this.userService.C_users().find(
+      (item) =>item.userId === userId
+    );
+
+    return user?.userName ?? 'Unknown User';
+  }
+
 
   private dialog = inject(Dialog);
   protected openTaskModal(task: ITask){

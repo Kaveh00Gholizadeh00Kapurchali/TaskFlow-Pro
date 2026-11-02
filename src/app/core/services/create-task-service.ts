@@ -45,7 +45,13 @@ export class TaskService{
 
 
 
-    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'| 'createdBy' | 'startedAt' | 'completedAt'>){ 
+    addTask(taskData: Omit<ITask, 'taskId' | 'status' | 'createdAt'| 'hourlyRate'| 'createdBy' | 'startedAt' | 'completedAt' |'assignedTo'>): void{
+        
+        const currentUser = this.auth.C_currentUser();
+        if(!currentUser){
+            return;
+        }
+
         const newTask ={
             taskId: Date.now(),
             status: 'pending',
@@ -56,26 +62,65 @@ export class TaskService{
             startedAt: null,
             completedAt: null,
 
+            assignedTo: null,            // تسکو کی گردن میگیره
+
             ...taskData
         };
         this.tasks.update(n_task => [...n_task, newTask])
     }
 
     startTask(taskId: number): void {
-        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'pending' ? {...task , status: 'in progress', startedAt: Date.now(), completedAt: null} : task));
-    }
-
-    completeTask(taskId : number): void{
-        const completedAt = Date.now()
-
-        this.tasks.update(tasks => tasks.map(task => task.taskId === taskId && task.status === 'in progress' ? {
-       
-            ...task,     
-            status: 'completed',
-            completedAt,
+        const currentUser= this.auth.C_currentUser();
+        if(!currentUser){
+            return;
         }
-         : task 
-        )
-            );
-             }
+
+        this.tasks.update(tasks => tasks.map((task) => 
+         {const canSeeTask = currentUser.userRole === 'admin' || 'manager' || task.visibleToRole === currentUser.userRole ;
+
+            const canStartTask = canSeeTask && task.taskId === taskId && task.status === 'pending' && task.assignedTo === null;
+            
+            if(!canStartTask){
+                return task;
+            }
+
+            return{
+                ...task,
+                status: 'in progress',
+                assignedTo: currentUser.userId,
+                startedAt: Date.now(),
+                completedAt: null,
+            };
+         }));
+        }
+
+    completeTask(taskId: number): void {
+        const currentUser = this.auth.C_currentUser();
+
+        if (!currentUser) {
+            return;
+        }
+
+        this.tasks.update((tasks) =>
+            tasks.map((task) => {
+            const canComplete =
+                task.taskId === taskId &&
+                task.status === 'in progress' &&
+                (
+                task.assignedTo === currentUser.userId ||
+                currentUser.userRole === 'admin'
+                );
+
+            if (!canComplete) {
+                return task;
+            }
+
+            return {
+                ...task,
+                status: 'completed',
+                completedAt: Date.now(),
+            };
+            })
+        );
+    }
 }
