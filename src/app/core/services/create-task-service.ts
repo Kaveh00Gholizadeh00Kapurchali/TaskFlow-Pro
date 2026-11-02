@@ -76,7 +76,7 @@ export class TaskService{
         }
 
         this.tasks.update(tasks => tasks.map((task) => 
-         {const canSeeTask = currentUser.userRole === 'admin' || 'manager' || task.visibleToRole === currentUser.userRole ;
+         {const canSeeTask = currentUser.userRole === 'admin' || currentUser.userRole === 'manager' || task.visibleToRole === currentUser.userRole ;
 
             const canStartTask = canSeeTask && task.taskId === taskId && task.status === 'pending' && task.assignedTo === null;
             
