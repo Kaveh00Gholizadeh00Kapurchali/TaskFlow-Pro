@@ -1,0 +1,128 @@
+:host {
+  display: block;
+}
+
+.user-management-page {
+  min-height: 100vh;
+  padding: clamp(16px, 3vw, 32px);
+  background: var(--tf-bg);
+}
+
+.user-management-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(20px, 3vw, 32px);
+  border: 1px solid var(--tf-border);
+  border-radius: var(--tf-radius);
+  background: var(--tf-surface);
+  box-shadow: var(--tf-shadow);
+}
+
+.page-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin-bottom: 6px;
+  color: var(--tf-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+h1 {
+  margin: 0;
+  color: var(--tf-text);
+  font-size: 1.5rem;
+  font-weight: 750;
+}
+
+.page-description,
+.help-text {
+  margin-top: 6px;
+  color: var(--tf-muted);
+  font-size: 0.875rem;
+}
+
+.user-count {
+  color: var(--tf-muted);
+  font-size: 0.875rem;
+}
+
+.feedback-message {
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--tf-primary-soft);
+  color: var(--tf-primary);
+  font-size: 0.875rem;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--tf-border);
+}
+
+th {
+  color: var(--tf-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+td {
+  color: var(--tf-text);
+  font-size: 0.875rem;
+}
+
+tbody tr:hover {
+  background: var(--tf-surface-soft);
+}
+
+select {
+  min-width: 150px;
+  padding: 8px 10px;
+  border: 1px solid var(--tf-border);
+  border-radius: 9px;
+  background: var(--tf-surface);
+  color: var(--tf-text);
+}
+
+select:disabled {
+  color: var(--tf-muted);
+  background: var(--tf-surface-soft);
+  cursor: not-allowed;
+}
+
+.current-user-label {
+  margin-left: 5px;
+  color: var(--tf-muted);
+  font-size: 0.75rem;
+}
+
+.empty-state {
+  padding: 32px;
+  color: var(--tf-muted);
+  text-align: center;
+}
+
+.help-text {
+  margin-top: 18px;
+}

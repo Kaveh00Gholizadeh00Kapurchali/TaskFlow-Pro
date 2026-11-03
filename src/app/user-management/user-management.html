@@ -1,0 +1,81 @@
+<main class="user-management-page">
+  <app-top-nav-bar></app-top-nav-bar>
+
+  <section class="user-management-container">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">ADMINISTRATION</p>
+        <h1>User management</h1>
+        <p class="page-description">
+          View users and update their roles.
+        </p>
+      </div>
+
+      <span class="user-count">
+        {{ userService.C_users().length }} users
+      </span>
+    </header>
+
+    @if (message()) {
+      <p class="feedback-message" role="status">
+        {{ message() }}
+      </p>
+    }
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          @for (user of userService.C_users(); track user.userId) {
+            <tr>
+              <td>
+                <strong>{{ user.userName }}</strong>
+
+                @if (user.userId === auth.C_currentUser()?.userId) {
+                  <span class="current-user-label">(you)</span>
+                }
+              </td>
+
+              <td>{{ user.userEmail }}</td>
+
+              <td>
+                <label class="sr-only" [for]="'role-' + user.userId">
+                  Role for {{ user.userName }}
+                </label>
+
+                <select
+                  [id]="'role-' + user.userId"
+                  [value]="user.userRole"
+                  [disabled]="user.userId === auth.C_currentUser()?.userId"
+                  (change)="changeRole(user.userId, $event)"
+                >
+                  <option value="admin">Admin</option>
+                  <option value="manager">Manager</option>
+                  <option value="developer">Developer</option>
+                  <option value="designer">Designer</option>
+                </select>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3" class="empty-state">
+                No users found.
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="help-text">
+      Your own role cannot be changed from this page.
+    </p>
+  </section>
+</main>
