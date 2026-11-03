@@ -15,6 +15,9 @@
       }
       <a [routerLink]="createNewTaskURL" routerLinkActive="active" mat-button>New task</a>
       <a [routerLink]="createUserURL" routerLinkActive="active" mat-button>Users</a>
+      @if (user.userRole === 'admin') {
+        <a routerLink="/users/manage" routerLinkActive="active" mat-button>Manage users</a>
+      }
       <span class="nav-user" [title]="user.userName">{{ user.userName }}</span>
       <button type="button" mat-button class="logout-button" (click)="auth.logOut()">Log out</button>
     } @else {
