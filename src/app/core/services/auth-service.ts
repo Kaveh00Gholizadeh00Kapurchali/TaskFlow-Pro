@@ -1,6 +1,6 @@
 import { Injectable, computed, effect, inject, signal } from "@angular/core";
 
-import { IUser } from "../models/UserModel";
+import { IUser, UserRole } from "../models/UserModel";
 
 import { UserService } from "./create-user-service";
 import { Router } from "@angular/router";
@@ -57,6 +57,29 @@ export class AuthService{
         this.currentUser.set(found);
         return true;
     }
+
+    changeUserRole(userId: number, newRole:UserRole): boolean {
+        const currentUser = this.currentUser();
+
+        if(!currentUser || currentUser.userRole !== 'admin'){
+            return false;
+        }
+        if(currentUser.userId === userId){
+            return false;
+        }
+
+        const userExists = this.userService.C_users().some((user) => user.userId === userId)
+
+        if(!userExists){
+            return false;
+        }
+        this.userService.updateUserRole(userId, newRole);
+        return true;
+
+    }
+
+
+
 
     logOut(): void{
         this.currentUser.set(null);

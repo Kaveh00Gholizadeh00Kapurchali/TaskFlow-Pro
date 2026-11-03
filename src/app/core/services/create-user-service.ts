@@ -1,6 +1,6 @@
 import { Injectable, inject, OnInit, effect, signal } from "@angular/core";
 
-import { IUser } from "../models/UserModel";
+import { IUser, UserRole} from "../models/UserModel";
 
 @Injectable({
     providedIn: 'root'
@@ -50,5 +50,18 @@ private loadUsers(): IUser[] {
                 ...userdata  // همه داده هارو بجز id از خود مدل میگیره خودش
             };
         this.users.update(n_user => [...n_user, newUser])
+    }
+
+    updateUserRole( userId:number, newRole: UserRole):void {
+        this.users.update((users) => users.map((user) => {
+            if(user.userId !== userId){
+                return user;
+            }
+            return{
+                ...user,
+                userRole:newRole
+            };
+        }
+        ));
     }
 }
