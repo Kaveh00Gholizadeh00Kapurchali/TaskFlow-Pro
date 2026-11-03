@@ -21,7 +21,7 @@ export class TaskManagement {
   protected selectedStatus = signal<StatusFilter>('all');
   protected allTask = this.taskService.C_tasks;
 
-  protected filteredTask = computed(()=>{
+  protected filteredTasks = computed(()=>{
     const status = this.selectedStatus();
     const tasks = this.allTask();
 
@@ -32,9 +32,9 @@ export class TaskManagement {
     return tasks.filter((task) => task.status === status);
   });
 
-  protected pendingCount = computed(()=> this.allTask().filter((task) => task.status === 'pending')).length;
-  protected inProgressCount = computed (()=> this.allTask().filter((task) => task.status === 'in progress')).length;
-  protected completeCount = computed (() => this.allTask().filter((task) => task.status === 'complete')).length; 
+  protected pendingCount = computed(()=> this.allTask().filter((task) => task.status === 'pending').length);
+  protected inProgressCount = computed (()=> this.allTask().filter((task) => task.status === 'in progress').length);
+  protected completedCount = computed (() => this.allTask().filter((task) => task.status === 'complete').length); 
 
   protected setStatusFilter(status: StatusFilter) : void {
     this.selectedStatus.set(status);
