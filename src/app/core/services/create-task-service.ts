@@ -123,4 +123,55 @@ export class TaskService{
             })
         );
     }
+
+
+    resetTaskManagement(taskId: number):void {
+        const currentUser = this.auth.C_currentUser()
+
+        if(!currentUser ||
+            (currentUser.userRole !== 'admin' && currentUser.userRole !== 'manager')
+        ){
+            return;
+        }
+
+        this.tasks.update((tasks) => tasks.map((task) => {
+            const canReset = task.taskId === taskId && (task.status === 'in progress' || task.status === 'compeleted')
+            if(!canReset){
+                return task;
+            }
+            return{
+                ...task,
+                status : 'pending',
+                assignedTo: null,
+                startedAt:null,
+                completedAt: null
+            };
+        })
+    );
+}
+
+   completeTaskManagement (taskId: number):void {
+        const currentUser = this.auth.C_currentUser()
+
+        if(!currentUser ||
+            (currentUser.userRole !== 'admin' && currentUser.userRole !== 'manager')
+        ){
+            return;
+        }
+
+        this.tasks.update((tasks) => tasks.map((task) => {
+            const canReset = task.taskId === taskId && task.status === 'in progress';
+            if(!canReset){
+                return task;
+            }
+            return{
+                ...task,
+                status : 'completed',
+                completedAt: Date.now()
+            };
+        })
+    );
+}
+
+
 }
