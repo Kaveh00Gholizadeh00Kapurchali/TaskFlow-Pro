@@ -135,7 +135,7 @@ export class TaskService{
         }
 
         this.tasks.update((tasks) => tasks.map((task) => {
-            const canReset = task.taskId === taskId && (task.status === 'in progress' || task.status === 'compeleted')
+            const canReset = task.taskId === taskId && (task.status === 'in progress' || task.status === 'completed')
             if(!canReset){
                 return task;
             }

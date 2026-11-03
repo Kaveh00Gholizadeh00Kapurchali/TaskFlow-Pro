@@ -5,8 +5,10 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
       <!-- یوزرنیم -->
       <div>
-        <label class="block text-sm text-gray-600 mb-1">Username</label>
+        <label for="login-username" class="block text-sm text-gray-600 mb-1">Username</label>
         <input
+          id="login-username"
+          autocomplete="username"
           type="text"
           formControlName="userName"
           class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"
@@ -18,8 +20,10 @@
 
       <!-- پسورد -->
       <div>
-        <label class="block text-sm text-gray-600 mb-1">Password</label>
+        <label for="login-password" class="block text-sm text-gray-600 mb-1">Password</label>
         <input
+          id="login-password"
+          autocomplete="current-password"
           type="password"
           formControlName="userPassword"
           class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"

@@ -4,11 +4,12 @@ import { RouterLink } from '@angular/router';
 
 import { TaskService } from '../core/services/create-task-service';
 import { UserService } from '../core/services/create-user-service';
+import { TopNavBar } from '../features/top-nav-bar/top-nav-bar';
 
 type StatusFilter = 'all' | 'pending' | 'in progress' | 'completed';
 
 @Component({
-  imports: [DatePipe, RouterLink],
+  imports: [DatePipe, RouterLink, TopNavBar],
   selector: 'app-task-management',
   styleUrl: './task-management.css',
   templateUrl: './task-management.html',
@@ -34,14 +35,14 @@ export class TaskManagement {
 
   protected pendingCount = computed(()=> this.allTask().filter((task) => task.status === 'pending').length);
   protected inProgressCount = computed (()=> this.allTask().filter((task) => task.status === 'in progress').length);
-  protected completedCount = computed (() => this.allTask().filter((task) => task.status === 'complete').length); 
+  protected completedCount = computed (() => this.allTask().filter((task) => task.status === 'completed').length); 
 
   protected setStatusFilter(status: StatusFilter) : void {
     this.selectedStatus.set(status);
   }
 
   protected assigneeName(userId : number | null | undefined): string {
-    if ( userId === null){
+    if (userId == null){
       return 'Unassigned';
     }
 

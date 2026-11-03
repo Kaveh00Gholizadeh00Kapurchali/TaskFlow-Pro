@@ -29,3 +29,14 @@ button:not(:disabled), a { cursor: pointer; }
 :focus-visible { outline: 3px solid #9aa4ff; outline-offset: 3px; }
 .cdk-overlay-dark-backdrop { background: rgba(22, 30, 52, .55); }
 .cdk-overlay-pane { max-width: calc(100vw - 32px); }
+
+@keyframes tf-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main { animation: tf-enter .35s ease-out both; }
+button, a, input, select, textarea { transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+button:not(:disabled):active, a:active { transform: scale(.98); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

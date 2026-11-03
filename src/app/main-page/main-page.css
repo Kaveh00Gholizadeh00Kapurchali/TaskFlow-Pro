@@ -10,4 +10,6 @@
 .dashboard-page .p-3 > p { color: var(--tf-text); font-weight: 650; }
 .dashboard-page button { min-height: 36px; border-color: var(--tf-border); border-radius: 9px; background: var(--tf-surface); color: var(--tf-muted); transition: background .18s, color .18s, border-color .18s; }
 .dashboard-page button:hover { border-color: #b7bdf5; background: var(--tf-primary-soft); color: var(--tf-primary); }
+.dashboard-page .p-3 { transition: transform .2s ease, box-shadow .2s ease; }
+.dashboard-page .p-3:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(35, 49, 85, .08); }
 @media (max-width: 700px) { .dashboard-page .bg-gray-200 { flex-direction: column; } .dashboard-page .bg-gray-200 > .flex-1 { width: 100%; } }

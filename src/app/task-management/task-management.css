@@ -1,0 +1,11 @@
+:host { display: block; }
+main { padding: clamp(16px, 3vw, 32px); background: var(--tf-bg); }
+header h1 { color: var(--tf-text); letter-spacing: -.03em; }
+section > div, section.rounded-xl { border-color: var(--tf-border); border-radius: var(--tf-radius); box-shadow: var(--tf-shadow); }
+section.rounded-xl { padding: clamp(16px, 2.5vw, 24px); }
+button, header a { border-radius: 9px; }
+button[aria-pressed='true'] { color: var(--tf-primary); background: var(--tf-primary-soft); border-color: #c7ccfb; }
+header a.bg-blue-600 { background: var(--tf-primary); }
+table { min-width: 880px; }
+tbody tr { transition: background-color .18s ease; }
+tbody tr:hover { background: var(--tf-surface-soft); }

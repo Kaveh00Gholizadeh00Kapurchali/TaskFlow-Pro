@@ -1,22 +1,23 @@
-import { Component, EventEmitter, Input, Output, signal, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, Input, inject, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { routes } from '../../app.routes';
+import { AuthService } from '../../core/services/auth-service';
 
 
 @Component({
-  imports: [RouterLink, MatToolbarModule, MatButtonModule],
+  imports: [RouterLink, RouterLinkActive, MatToolbarModule, MatButtonModule],
   selector: 'app-top-nav-bar',
   styleUrl: './top-nav-bar.css',
   templateUrl: './top-nav-bar.html',
 })
 export class TopNavBar {
+  protected auth = inject(AuthService);
   // urls 
   @Input() homeURL : string = '';
-  @Input() createNewTaskURL :string = '/task/add' ;
-  @Input() taskManagementURL : string = '';
-  @Input() createUserURL : string = 'users/add';
+  @Input() createNewTaskURL :string = '/tasks/add' ;
+  @Input() taskManagementURL : string = '/tasks/list';
+  @Input() createUserURL : string = '/users/add';
   @Input() timeZone : string = 'Asia/Tehran';
 
 
