@@ -1,15 +1,15 @@
 :host { display: block; }
 .dashboard-page { background: var(--tf-bg); padding: clamp(16px, 3vw, 32px); }
 .dashboard-page > .max-w-4xl { max-width: 1180px; }
-.dashboard-page .bg-gray-200 { gap: 20px; margin: 0; padding: 0; background: transparent; align-items: flex-start; }
-.dashboard-page .bg-gray-200 > .flex-1 { min-width: 0; padding: 22px; border: 1px solid var(--tf-border); border-radius: var(--tf-radius); background: var(--tf-surface); box-shadow: var(--tf-shadow); }
+.dashboard-page .tf-bg-muted { gap: 20px; margin: 0; padding: 0; background: transparent; align-items: flex-start; }
+.dashboard-page .tf-bg-muted > .flex-1 { min-width: 0; padding: 22px; border: 1px solid var(--tf-border); border-radius: var(--tf-radius); background: var(--tf-surface); box-shadow: var(--tf-shadow); }
 .dashboard-page .border-b { padding-bottom: 16px; margin-bottom: 18px; border-color: var(--tf-border); }
 .dashboard-page .border-b p { color: var(--tf-text); font-size: .95rem; font-weight: 750; }
 .dashboard-page .border-b span { padding: 4px 9px; border-radius: 8px; background: var(--tf-primary-soft); color: var(--tf-primary); }
 .dashboard-page .p-3 { padding: 16px; border-color: var(--tf-border); border-radius: 12px; background: var(--tf-surface-soft); }
 .dashboard-page .p-3 > p { color: var(--tf-text); font-weight: 650; }
 .dashboard-page button { min-height: 36px; border-color: var(--tf-border); border-radius: 9px; background: var(--tf-surface); color: var(--tf-muted); transition: background .18s, color .18s, border-color .18s; }
-.dashboard-page button:hover { border-color: #b7bdf5; background: var(--tf-primary-soft); color: var(--tf-primary); }
+.dashboard-page button:hover { border-color: var(--tf-primary-border); background: var(--tf-primary-soft); color: var(--tf-primary); }
 .dashboard-page .p-3 { transition: transform .2s ease, box-shadow .2s ease; }
-.dashboard-page .p-3:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(35, 49, 85, .08); }
-@media (max-width: 700px) { .dashboard-page .bg-gray-200 { flex-direction: column; } .dashboard-page .bg-gray-200 > .flex-1 { width: 100%; } }
+.dashboard-page .p-3:hover { transform: translateY(-2px); box-shadow: var(--tf-shadow-hover); }
+@media (max-width: 700px) { .dashboard-page .tf-bg-muted { flex-direction: column; } .dashboard-page .tf-bg-muted > .flex-1 { width: 100%; } }

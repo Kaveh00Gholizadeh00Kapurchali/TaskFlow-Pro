@@ -12,7 +12,7 @@ mat-toolbar {
 .datetime-badge.time { color: var(--tf-primary); }
 mat-toolbar a[mat-button] { color: var(--tf-muted); border-radius: 9px; font-size: .78rem; font-weight: 650; text-decoration: none; }
 mat-toolbar a[mat-button]:hover { background: var(--tf-primary-soft); color: var(--tf-primary); }
-mat-toolbar a[mat-button].active { background: var(--tf-primary); color: white; }
+mat-toolbar a[mat-button].active { background: var(--tf-primary); color: var(--tf-on-primary); }
 @media (max-width: 1050px) { .navbar-spacer { display: none; } .brand-title { flex-basis: 100%; margin-bottom: 4px; } }
 @media (max-width: 600px) { mat-toolbar { padding: 12px; } mat-toolbar a[mat-button] { padding-inline: 8px; } }
 .brand-title { text-decoration: none; }
@@ -20,5 +20,5 @@ mat-toolbar a[mat-button].active { background: var(--tf-primary); color: white; 
 .nav-clock, .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
 .nav-user { max-width: 140px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--tf-muted); margin-inline: 8px; font-size: .78rem; font-weight: 600; }
 .logout-button { color: var(--tf-danger) !important; }
-.logout-button:hover { background: #fff0f2; }
+.logout-button:hover { background: var(--tf-danger-soft); }
 @media (max-width: 600px) { .nav-links { width: 100%; } .nav-user { max-width: 110px; } }

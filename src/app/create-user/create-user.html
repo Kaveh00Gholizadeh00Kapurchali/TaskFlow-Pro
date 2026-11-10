@@ -1,5 +1,5 @@
 
-<main class="min-h-screen bg-gray-100 p-6">
+<main class="min-h-screen tf-bg p-6">
   <app-top-nav-bar
   homeURL="/"
   taskManagementURL="/tasks/list"
@@ -8,12 +8,12 @@
   timeZone="Asia/Tehran">
 </app-top-nav-bar>
   <section class="taskflow-form-container max-w-md mx-auto mt-10">
-    <div class="taskflow-card bg-white p-6 rounded-lg shadow-sm border border-gray-300">
+    <div class="taskflow-card tf-surface p-6 rounded-lg shadow-sm border tf-border">
 
       <!-- هدر فرم -->
-      <header class="border-b border-gray-200 pb-4 mb-6">
-        <h1 class="text-lg font-bold text-gray-800">Create New User</h1>
-        <p class="text-sm text-gray-500">
+      <header class="border-b tf-border pb-4 mb-6">
+        <h1 class="text-lg font-bold tf-text">Create New User</h1>
+        <p class="text-sm tf-muted">
           Fill in the details to add a new team member.
         </p>
       </header>
@@ -28,7 +28,7 @@
         <div>
           <label
             for="userName"
-            class="block text-sm font-medium text-gray-700 mb-1"
+            class="block text-sm font-medium tf-text mb-1"
           >
             Username
           </label>
@@ -39,14 +39,14 @@
             type="text"
             autocomplete="username"
             placeholder="e.g. kaveh_dev"
-            class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            class="taskflow-input w-full border tf-border rounded-md p-2 text-sm focus:ring-1 outline-none"
           />
 
           @if (
             registerForm.get('userName')?.touched &&
             registerForm.get('userName')?.hasError('required')
           ) {
-            <p class="taskflow-error text-red-500 text-xs mt-1">
+            <p class="taskflow-error tf-danger-text text-xs mt-1">
               Username is required.
             </p>
           }
@@ -56,7 +56,7 @@
         <div>
           <label
             for="userEmail"
-            class="block text-sm font-medium text-gray-700 mb-1"
+            class="block text-sm font-medium tf-text mb-1"
           >
             Email
           </label>
@@ -67,14 +67,14 @@
             type="email"
             autocomplete="email"
             placeholder="example@domain.com"
-            class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            class="taskflow-input w-full border tf-border rounded-md p-2 text-sm focus:ring-1 outline-none"
           />
 
           @if (
             registerForm.get('userEmail')?.touched &&
             registerForm.get('userEmail')?.invalid
           ) {
-            <p class="taskflow-error text-red-500 text-xs mt-1">
+            <p class="taskflow-error tf-danger-text text-xs mt-1">
               @if (registerForm.get('userEmail')?.hasError('required')) {
                 Email is required.
               } @else if (registerForm.get('userEmail')?.hasError('email')) {
@@ -88,7 +88,7 @@
         <div>
           <label
             for="userPassword"
-            class="block text-sm font-medium text-gray-700 mb-1"
+            class="block text-sm font-medium tf-text mb-1"
           >
             Password
           </label>
@@ -99,14 +99,14 @@
             type="password"
             autocomplete="new-password"
             placeholder="Min 6 characters"
-            class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            class="taskflow-input w-full border tf-border rounded-md p-2 text-sm focus:ring-1 outline-none"
           />
 
           @if (
             registerForm.get('userPassword')?.touched &&
             registerForm.get('userPassword')?.invalid
           ) {
-            <p class="taskflow-error text-red-500 text-xs mt-1">
+            <p class="taskflow-error tf-danger-text text-xs mt-1">
               @if (registerForm.get('userPassword')?.hasError('required')) {
                 Password is required.
               } @else if (registerForm.get('userPassword')?.hasError('minlength')) {
@@ -120,7 +120,7 @@
         <div>
           <label
             for="userRole"
-            class="block text-sm font-medium text-gray-700 mb-1"
+            class="block text-sm font-medium tf-text mb-1"
           >
             Role
           </label>
@@ -128,7 +128,7 @@
           <select
             id="userRole"
             formControlName="userRole"
-            class="taskflow-input w-full border border-gray-300 rounded-md p-2 text-sm focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"
+            class="taskflow-input w-full border tf-border rounded-md p-2 text-sm focus:ring-1 outline-none"
           >
             <option value="" disabled>Select a role...</option>
             <option value="admin">Admin</option>
@@ -141,7 +141,7 @@
             registerForm.get('userRole')?.touched &&
             registerForm.get('userRole')?.hasError('required')
           ) {
-            <p class="taskflow-error text-red-500 text-xs mt-1">
+            <p class="taskflow-error tf-danger-text text-xs mt-1">
               Please select a role.
             </p>
           }
@@ -152,7 +152,7 @@
           <button
             type="submit"
             [disabled]="registerForm.invalid"
-            class="taskflow-button w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white text-sm py-2 px-4 rounded-md font-medium transition duration-200"
+            class="taskflow-button w-full flex items-center justify-center gap-2 tf-primary-bg tf-hover-primary-hover-bg tf-disabled-disabled-bg disabled:cursor-not-allowed tf-on-primary text-sm py-2 px-4 rounded-md font-medium transition duration-200"
           >
             <span class="taskflow-button-icon" aria-hidden="true">+</span>
             <span>Create User</span>

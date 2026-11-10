@@ -1,53 +1,53 @@
-<main class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
-  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-300 w-full max-w-sm">
-    <h1 class="font-bold text-gray-700 text-lg mb-4 text-center">Login to TaskFlow</h1>
+<main class="tf-bg min-h-screen flex items-center justify-center p-6">
+  <div class="tf-surface p-6 rounded-lg shadow-sm border tf-border w-full max-w-sm">
+    <h1 class="font-bold tf-text text-lg mb-4 text-center">Login to TaskFlow</h1>
 
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-4">
       <!-- یوزرنیم -->
       <div>
-        <label for="login-username" class="block text-sm text-gray-600 mb-1">Username</label>
+        <label for="login-username" class="block text-sm tf-muted mb-1">Username</label>
         <input
           id="login-username"
           autocomplete="username"
           type="text"
           formControlName="userName"
-          class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"
+          class="w-full border tf-border rounded px-3 py-2 text-sm focus:outline-none"
         />
         @if (userName?.touched && userName?.hasError('required')) {
-          <p class="text-red-500 text-xs mt-1">Username is required</p>
+          <p class="tf-danger-text text-xs mt-1">Username is required</p>
         }
       </div>
 
       <!-- پسورد -->
       <div>
-        <label for="login-password" class="block text-sm text-gray-600 mb-1">Password</label>
+        <label for="login-password" class="block text-sm tf-muted mb-1">Password</label>
         <input
           id="login-password"
           autocomplete="current-password"
           type="password"
           formControlName="userPassword"
-          class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:border-blue-400"
+          class="w-full border tf-border rounded px-3 py-2 text-sm focus:outline-none"
         />
         @if (userPassword?.touched && userPassword?.hasError('required')) {
-          <p class="text-red-500 text-xs mt-1">Password is required</p>
+          <p class="tf-danger-text text-xs mt-1">Password is required</p>
         }
       </div>
 
       <!-- پیام خطا -->
       @if (errorMessage()) {
-        <p class="text-red-600 text-sm text-center">{{ errorMessage() }}</p>
+        <p class="tf-danger-text text-sm text-center">{{ errorMessage() }}</p>
       }
 
       <button
         type="submit"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 rounded"
+        class="w-full tf-primary-bg tf-hover-primary-hover-bg tf-on-primary text-sm font-medium py-2 rounded"
       >
         Login
       </button>
 
-      <p class="text-xs text-gray-500 text-center">
+      <p class="text-xs tf-muted text-center">
         No account?
-        <a routerLink="/users/add" class="text-blue-600 hover:underline">Register</a>
+        <a routerLink="/users/add" class="tf-primary-text hover:underline">Register</a>
       </p>
     </form>
   </div>

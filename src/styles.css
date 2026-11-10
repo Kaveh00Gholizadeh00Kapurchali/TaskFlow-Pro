@@ -12,6 +12,22 @@
   --tf-primary-dark: #3944b8;
   --tf-primary-soft: #eef0ff;
   --tf-danger: #c84758;
+  --tf-danger-soft: #fff0f2;
+  --tf-success: #167a56;
+  --tf-success-soft: #e6f6ef;
+  --tf-success-solid: #16845e;
+  --tf-warning: #d97706;
+  --tf-on-primary: #ffffff;
+  --tf-disabled: #c5cbd8;
+  --tf-placeholder: #9ba5b6;
+  --tf-primary-border: #c7ccfb;
+  --tf-success-border: #a7e2c5;
+  --tf-glow: #e9ebff;
+  --tf-focus: #9aa4ff;
+  --tf-focus-shadow: 0 0 0 3px rgba(76, 87, 214, .12);
+  --tf-shadow-hover: 0 8px 20px rgba(35, 49, 85, .08);
+  --tf-shadow-modal: 0 24px 70px rgba(15, 23, 42, .25);
+  --tf-backdrop: rgba(22, 30, 52, .55);
   --tf-radius: 18px;
   --tf-shadow: 0 12px 36px rgba(35, 49, 85, .07);
 }
@@ -26,8 +42,8 @@ body {
 }
 button, input, textarea, select { font: inherit; }
 button:not(:disabled), a { cursor: pointer; }
-:focus-visible { outline: 3px solid #9aa4ff; outline-offset: 3px; }
-.cdk-overlay-dark-backdrop { background: rgba(22, 30, 52, .55); }
+:focus-visible { outline: 3px solid var(--tf-focus); outline-offset: 3px; }
+.cdk-overlay-dark-backdrop { background: var(--tf-backdrop); }
 .cdk-overlay-pane { max-width: calc(100vw - 32px); }
 
 @keyframes tf-enter {
@@ -40,3 +56,35 @@ button:not(:disabled):active, a:active { transform: scale(.98); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Semantic color utilities: layout remains in the component templates. */
+.tf-bg { background-color: var(--tf-bg); }
+.tf-bg-muted { background-color: var(--tf-border); }
+.tf-surface { background-color: var(--tf-surface); }
+.tf-surface-soft { background-color: var(--tf-surface-soft); }
+.tf-primary-soft { background-color: var(--tf-primary-soft); }
+.tf-success-soft { background-color: var(--tf-success-soft); }
+.tf-primary-bg { background-color: var(--tf-primary); }
+.tf-success-bg { background-color: var(--tf-success-solid); }
+.tf-warning-bg { background-color: var(--tf-warning); }
+.tf-danger-bg { background-color: var(--tf-danger); }
+.tf-text { color: var(--tf-text); }
+.tf-muted { color: var(--tf-muted); }
+.tf-primary-text { color: var(--tf-primary); }
+.tf-success-text { color: var(--tf-success); }
+.tf-danger-text { color: var(--tf-danger); }
+.tf-on-primary { color: var(--tf-on-primary); }
+.tf-border { border-color: var(--tf-border); }
+.tf-primary-border { border-color: var(--tf-primary-border); }
+.tf-success-border { border-color: var(--tf-success-border); }
+.tf-hover-bg:hover { background-color: var(--tf-bg); }
+.tf-hover-bg-muted:hover { background-color: var(--tf-border); }
+.tf-hover-primary-soft:hover { background-color: var(--tf-primary-soft); }
+.tf-hover-success-soft:hover { background-color: var(--tf-success-soft); }
+.tf-hover-primary-hover-bg:hover { background-color: var(--tf-primary-dark); }
+.tf-hover-primary-text:hover { color: var(--tf-primary); }
+.tf-hover-success-text:hover { color: var(--tf-success); }
+.tf-hover-text:hover { color: var(--tf-text); }
+.tf-hover-primary-border:hover { border-color: var(--tf-primary-border); }
+.tf-hover-success-border:hover { border-color: var(--tf-success-border); }
+.tf-disabled-disabled-bg:disabled { background-color: var(--tf-disabled); }

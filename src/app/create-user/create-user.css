@@ -7,9 +7,9 @@ main { padding: clamp(16px, 3vw, 32px); background: var(--tf-bg); }
 .taskflow-card header p { margin-top: 5px; color: var(--tf-muted); }
 .taskflow-card label { color: var(--tf-text); font-size: .78rem; font-weight: 650; }
 .taskflow-input { min-height: 44px; padding: 11px 13px; border: 1px solid var(--tf-border); border-radius: 10px; background: var(--tf-surface-soft); color: var(--tf-text); transition: border-color .18s, box-shadow .18s; }
-.taskflow-input:focus { border-color: var(--tf-primary); box-shadow: 0 0 0 3px rgba(76, 87, 214, .12); outline: none; }
-.taskflow-input::placeholder { color: #9ba5b6; }
+.taskflow-input:focus { border-color: var(--tf-primary); box-shadow: var(--tf-focus-shadow); outline: none; }
+.taskflow-input::placeholder { color: var(--tf-placeholder); }
 .taskflow-error { color: var(--tf-danger); }
 .taskflow-button { min-height: 44px; border-radius: 10px; background: var(--tf-primary); font-weight: 650; }
 .taskflow-button:hover:not(:disabled) { background: var(--tf-primary-dark); }
-.taskflow-button:disabled { background: #c5cbd8; }
+.taskflow-button:disabled { background: var(--tf-disabled); }

@@ -5,11 +5,14 @@ main > .max-w-xl > div:first-child { padding-bottom: 18px; margin-bottom: 24px; 
 h2 { color: var(--tf-text); font-size: 1.15rem; letter-spacing: -.02em; }
 label { color: var(--tf-text); font-size: .75rem; letter-spacing: .03em; }
 input, textarea, select { min-height: 44px; padding: 11px 13px; border-color: var(--tf-border); border-radius: 10px; background: var(--tf-surface-soft); color: var(--tf-text); }
-input:focus, textarea:focus, select:focus { border-color: var(--tf-primary); box-shadow: 0 0 0 3px rgba(76, 87, 214, .12); outline: none; }
+input:focus, textarea:focus, select:focus { border-color: var(--tf-primary); box-shadow: var(--tf-focus-shadow); outline: none; }
 textarea { min-height: 100px; resize: vertical; }
 button[mat-stroked-button] { min-height: 44px; border-radius: 10px !important; }
 form > .border-t { margin-top: 24px; padding-top: 20px; border-color: var(--tf-border); }
 button[type='submit'] { min-height: 42px; border-radius: 10px; background: var(--tf-primary); }
 button[type='submit']:hover:not(:disabled) { background: var(--tf-primary-dark); }
-button[type='submit']:disabled { background: #c5cbd8; }
+button[type='submit']:disabled { background: var(--tf-disabled); }
 button[type='button']:not([mat-stroked-button]) { border-radius: 10px; }
+
+.tf-invalid { border-color: var(--tf-danger) !important; background-color: var(--tf-danger-soft) !important; }
+.tf-invalid:focus { border-color: var(--tf-danger); box-shadow: 0 0 0 3px var(--tf-danger-soft); }

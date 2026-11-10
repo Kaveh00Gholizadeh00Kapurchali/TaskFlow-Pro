@@ -3,8 +3,8 @@ h2 { margin: 0 0 24px; color: var(--tf-text); font-size: 1.15rem; font-weight: 7
 .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
 label { color: var(--tf-text); font-size: .8rem; font-weight: 650; }
 input { min-height: 44px; padding: 10px 12px; border: 1px solid var(--tf-border); border-radius: 10px; background: var(--tf-surface-soft); }
-input:focus { border-color: var(--tf-primary); box-shadow: 0 0 0 3px rgba(76, 87, 214, .12); outline: none; }
-small { color: var(--tf-muted); } .error { color: var(--tf-danger); } .success { color: #16845e; }
+input:focus { border-color: var(--tf-primary); box-shadow: var(--tf-focus-shadow); outline: none; }
+small { color: var(--tf-muted); } .error { color: var(--tf-danger); } .success { color: var(--tf-success); }
 .btn-submit, .btn-secondary { width: 100%; min-height: 44px; margin-top: 10px; border-radius: 10px; font-weight: 650; }
-.btn-submit { background: var(--tf-primary); color: white; } .btn-submit:disabled { background: #c5cbd8; cursor: not-allowed; }
+.btn-submit { background: var(--tf-primary); color: var(--tf-on-primary); } .btn-submit:disabled { background: var(--tf-disabled); cursor: not-allowed; }
 .btn-secondary { border: 1px solid var(--tf-border); color: var(--tf-primary); background: var(--tf-surface-soft); }

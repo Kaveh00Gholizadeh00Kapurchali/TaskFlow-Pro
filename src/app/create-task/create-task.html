@@ -1,4 +1,4 @@
-<main class="bg-gray-100 p-6 min-h-screen">
+<main class="tf-bg p-6 min-h-screen">
   <app-top-nav-bar
       homeURL="/"
       taskManagementURL="/tasks/list"
@@ -8,23 +8,23 @@
     >
     </app-top-nav-bar>
   
-  <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-sm border border-gray-200 mt-6">
+  <div class="max-w-xl mx-auto tf-surface p-6 rounded-xl shadow-sm border tf-border mt-6">
     
     <!-- هدر فرم -->
     <div class="flex items-center justify-between border-b pb-3 mb-5">
-      <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
-        <span class="text-blue-600">➕</span>
+      <h2 class="text-lg font-bold tf-text flex items-center gap-2">
+        <span class="tf-primary-text">➕</span>
         <span>Create New Task</span>
       </h2>
-      <span class="text-xs text-gray-400">TaskFlow Pro</span>
+      <span class="text-xs tf-muted">TaskFlow Pro</span>
     </div>
   
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="space-y-4">
   
       <!-- ۱. فیلد عنوان تسک (Title) -->
       <div>
-        <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
-          Title <span class="text-red-500">*</span>
+        <label class="block text-xs font-semibold tf-text uppercase tracking-wider mb-1">
+          Title <span class="tf-danger-text">*</span>
         </label>
         <input
           type="text"
@@ -32,12 +32,12 @@
           placeholder="e.g., Setup ASP.NET Core Identity"
           class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none transition-all duration-150"
           [ngClass]="{
-            'border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200': taskName?.invalid && (taskName?.dirty || taskName?.touched),
-            'border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100': !(taskName?.invalid && (taskName?.dirty || taskName?.touched))
+            'tf-invalid': taskName?.invalid && (taskName?.dirty || taskName?.touched),
+            'tf-valid': !(taskName?.invalid && (taskName?.dirty || taskName?.touched))
           }"
         />
         @if (taskName?.invalid && (taskName?.dirty || taskName?.touched)) {
-          <div class="text-xs text-red-500 mt-1 space-y-0.5">
+          <div class="text-xs tf-danger-text mt-1 space-y-0.5">
             @if (taskName?.errors?.['required']) {
               <p>Task title is required.</p>
             }
@@ -51,19 +51,19 @@
       <!-- ۲. فیلد توضیحات (Description) -->
       <div>
         <div class="flex justify-between items-center mb-1">
-          <label class="text-xs font-semibold text-gray-700 uppercase tracking-wider">
+          <label class="text-xs font-semibold tf-text uppercase tracking-wider">
             Description
           </label>
-          <span class="text-[10px] text-gray-400">Max 300 chars</span>
+          <span class="text-[10px] tf-muted">Max 300 chars</span>
         </div>
         <textarea
           formControlName="taskDescription"
           rows="3"
           placeholder="Provide some details or checklist..."
-          class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all duration-150"
+          class="w-full px-3 py-2 text-sm border tf-border rounded-lg focus:outline-none focus:ring-2 transition-all duration-150"
         ></textarea>
         @if (taskDescription?.invalid && (taskDescription?.dirty || taskDescription?.touched)) {
-          <div class="text-xs text-red-500 mt-1">
+          <div class="text-xs tf-danger-text mt-1">
             @if (taskDescription?.errors?.['maxlength']) {
               <p>Description cannot exceed 300 characters.</p>
             }
@@ -76,27 +76,27 @@
         
         <!-- فیلد تاریخ تحویل -->
         <div>
-          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
-            Due Date <span class="text-red-500">*</span>
+          <label class="block text-xs font-semibold tf-text uppercase tracking-wider mb-1">
+            Due Date <span class="tf-danger-text">*</span>
           </label>
           <input
             type="date"
             formControlName="dueDate"
             class="w-full px-3 py-2 text-sm border rounded-lg focus:outline-none transition-all duration-150"
             [ngClass]="{
-              'border-red-400 bg-red-50 focus:ring-2 focus:ring-red-200': dueDate?.invalid && (dueDate?.dirty || dueDate?.touched),
-              'border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100': !(dueDate?.invalid && (dueDate?.dirty || dueDate?.touched))
+              'tf-invalid': dueDate?.invalid && (dueDate?.dirty || dueDate?.touched),
+              'tf-valid': !(dueDate?.invalid && (dueDate?.dirty || dueDate?.touched))
             }"
           />
           @if (dueDate?.invalid && (dueDate?.dirty || dueDate?.touched)) {
-            <p class="text-xs text-red-500 mt-1">Please specify a due date.</p>
+            <p class="text-xs tf-danger-text mt-1">Please specify a due date.</p>
           }
         </div>
   
         <!-- انتخاب اولویت با استفاده از MatMenu -->
         <div>
-          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
-            Priority <span class="text-red-500">*</span>
+          <label class="block text-xs font-semibold tf-text uppercase tracking-wider mb-1">
+            Priority <span class="tf-danger-text">*</span>
           </label>
           
           <!-- دکمه تریگر منو -->
@@ -104,50 +104,50 @@
             type="button"
             mat-stroked-button
             [matMenuTriggerFor]="priorityMenu"
-            class="w-full !h-[38px] !text-left !flex !items-center !justify-between !border-gray-300 !rounded-lg"
-            [ngClass]="{ '!border-red-400 !bg-red-50': priority?.invalid && (priority?.dirty || priority?.touched) }"
+            class="w-full !h-[38px] !text-left !flex !items-center !justify-between !rounded-lg"
+            [ngClass]="{ 'tf-invalid': priority?.invalid && (priority?.dirty || priority?.touched) }"
           >
             <span class="text-sm font-medium">
               {{ priority?.value ? priority?.value : 'Select priority...' }}
             </span>
-            <span class="text-gray-400 text-xs">▼</span>
+            <span class="tf-muted text-xs">▼</span>
           </button>
   
           <!-- منوی متریال (با اضافه شدن گزینه Urgent برای مطابقت با setPriority) -->
           <mat-menu #priorityMenu="matMenu">
             <button mat-menu-item (click)="setPriority('Low')">
-              <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+              <span class="inline-block w-2 h-2 rounded-full tf-success-bg mr-2"></span>
               <span>Low</span>
             </button>
             <button mat-menu-item (click)="setPriority('Medium')">
-              <span class="inline-block w-2 h-2 rounded-full bg-yellow-500 mr-2"></span>
+              <span class="inline-block w-2 h-2 rounded-full tf-warning-bg mr-2"></span>
               <span>Medium</span>
             </button>
             <button mat-menu-item (click)="setPriority('High')">
-              <span class="inline-block w-2 h-2 rounded-full bg-orange-500 mr-2"></span>
+              <span class="inline-block w-2 h-2 rounded-full tf-warning-bg mr-2"></span>
               <span>High</span>
             </button>
             <button mat-menu-item (click)="setPriority('Urgent')">
-              <span class="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
+              <span class="inline-block w-2 h-2 rounded-full tf-danger-bg mr-2"></span>
               <span>Urgent</span>
             </button>
           </mat-menu>
   
           @if (priority?.invalid && (priority?.dirty || priority?.touched)) {
-            <p class="text-xs text-red-500 mt-1">Selecting a priority level is required.</p>
+            <p class="text-xs tf-danger-text mt-1">Selecting a priority level is required.</p>
           }
         </div>
   
       </div>
 
       <div>
-        <label for="visibleToRole" class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
-          Visible to role <span class="text-red-500">*</span>
+        <label for="visibleToRole" class="block text-xs font-semibold tf-text uppercase tracking-wider mb-1">
+          Visible to role <span class="tf-danger-text">*</span>
         </label>
         <select
           id="visibleToRole"
           formControlName="visibleToRole"
-          class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          class="w-full px-3 py-2 text-sm border tf-border rounded-lg focus:outline-none focus:ring-2"
         >
           <option value="">Select a role</option>
           <option value="developer">Developer</option>
@@ -156,7 +156,7 @@
           <option value="admin">Admin</option>
         </select>
         @if (taskForm.get('visibleToRole')?.invalid && taskForm.get('visibleToRole')?.touched) {
-          <p class="text-xs text-red-500 mt-1">Please select a role.</p>
+          <p class="text-xs tf-danger-text mt-1">Please select a role.</p>
         }
       </div>
 
@@ -166,7 +166,7 @@
         <button
           type="button"
           (click)="taskForm.reset()"
-          class="px-4 py-2 text-xs font-semibold text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+          class="px-4 py-2 text-xs font-semibold tf-muted tf-hover-text tf-bg tf-hover-bg-muted rounded-lg transition-colors"
         >
           Clear
         </button>
@@ -174,7 +174,7 @@
         <button
           type="submit"
           [disabled]="taskForm.invalid"
-          class="px-5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed rounded-lg shadow-sm transition-all"
+          class="px-5 py-2 text-xs font-semibold tf-on-primary tf-primary-bg tf-hover-primary-hover-bg tf-disabled-disabled-bg disabled:cursor-not-allowed rounded-lg shadow-sm transition-all"
         >
           Save Task
         </button>

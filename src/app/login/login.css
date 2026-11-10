@@ -1,10 +1,10 @@
 :host { display: block; }
-main { background: radial-gradient(circle at 20% 10%, #e9ebff, transparent 38%), var(--tf-bg); }
+main { background: radial-gradient(circle at 20% 10%, var(--tf-glow), transparent 38%), var(--tf-bg); }
 main > div { padding: 32px; border: 1px solid var(--tf-border); border-radius: var(--tf-radius); box-shadow: var(--tf-shadow); }
 h1 { color: var(--tf-text); font-size: 1.35rem; letter-spacing: -.03em; }
 label { color: var(--tf-text); font-weight: 600; }
 input { min-height: 44px; border-color: var(--tf-border); border-radius: 10px; background: var(--tf-surface-soft); }
-input:focus { border-color: var(--tf-primary); box-shadow: 0 0 0 3px rgba(76, 87, 214, .12); }
+input:focus { border-color: var(--tf-primary); box-shadow: var(--tf-focus-shadow); }
 button[type='submit'] { min-height: 44px; border-radius: 10px; background: var(--tf-primary); }
 button[type='submit']:hover { background: var(--tf-primary-dark); }
 main a { color: var(--tf-primary); }
