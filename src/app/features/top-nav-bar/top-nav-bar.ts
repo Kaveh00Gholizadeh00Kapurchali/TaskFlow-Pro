@@ -2,11 +2,12 @@ import { Component, Input, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ThemeToggle } from '../theme-toggle/theme-toggle';
 import { AuthService } from '../../core/services/auth-service';
 
 
 @Component({
-  imports: [RouterLink, RouterLinkActive, MatToolbarModule, MatButtonModule],
+  imports: [RouterLink, RouterLinkActive, MatToolbarModule, MatButtonModule, ThemeToggle],
   selector: 'app-top-nav-bar',
   styleUrl: './top-nav-bar.css',
   templateUrl: './top-nav-bar.html',

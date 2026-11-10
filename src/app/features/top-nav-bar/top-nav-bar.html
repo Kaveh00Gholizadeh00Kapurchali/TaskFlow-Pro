@@ -9,6 +9,7 @@
   </div>
   <nav class="nav-links" aria-label="Main navigation">
     <a [routerLink]="homeURL || '/'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-button>Home</a>
+    <app-theme-toggle />
     @if (auth.C_currentUser(); as user) {
       @if (user.userRole === 'admin' || user.userRole === 'manager') {
         <a [routerLink]="taskManagementURL" routerLinkActive="active" mat-button>Tasks</a>

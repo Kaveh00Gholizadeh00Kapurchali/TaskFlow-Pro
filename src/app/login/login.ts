@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators  } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { ThemeToggle } from '../features/theme-toggle/theme-toggle';
 import { AuthService } from '../core/services/auth-service';
 
 
 @Component({
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink, ThemeToggle],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',

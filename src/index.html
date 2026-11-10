@@ -2,6 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <script>
+      (() => {
+        let savedTheme;
+        try { savedTheme = localStorage.getItem('taskflow-theme'); } catch {}
+        const theme = savedTheme === 'dark' || savedTheme === 'light'
+          ? savedTheme
+          : (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
     <title>TaskFlowPro</title>
     <base href="/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

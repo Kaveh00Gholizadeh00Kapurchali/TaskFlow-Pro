@@ -8,3 +8,6 @@ input:focus { border-color: var(--tf-primary); box-shadow: var(--tf-focus-shadow
 button[type='submit'] { min-height: 44px; border-radius: 10px; background: var(--tf-primary); }
 button[type='submit']:hover { background: var(--tf-primary-dark); }
 main a { color: var(--tf-primary); }
+
+.login-theme-toggle { display: flex; justify-content: flex-end; margin-bottom: 16px; }
+input { color: var(--tf-text); }
