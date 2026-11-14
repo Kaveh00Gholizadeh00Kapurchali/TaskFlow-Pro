@@ -14,7 +14,7 @@ import { adminGuard } from './core/guards/admin-guard';
 
 export const routes: Routes = [
     {path:'', component: MainPage, canActivate:[authGuard]},
-    {path:'tasks/add', component: CreateTask, canActivate:[authGuard]},
+    {path:'tasks/add', component: CreateTask, canActivate:[authGuard, managementGuard]},
     {path:'tasks/list', component: TaskManagement, canActivate:[managementGuard]},
     {path:'users/manage', component:UserManagement, canActivate:[adminGuard]},
     {path:'dummy', component: Dummy},
